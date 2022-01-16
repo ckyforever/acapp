@@ -8,10 +8,18 @@ class AcGamePlayground {
         this.width = this.$playground.width();
         this.height = this.$playground.height();
         this.game_map = new GameMap(this);
-        this.player = [];
-        this.player.push(new Player(this,this.width / 2,this.height / 2,this.height * 0.05,"white",this.height * 0.15,true));
+        this.players = [];
+        this.players.push(new Player(this,this.width / 2,this.height / 2,this.height * 0.05,"white",this.height * 0.15,true));
+        for(let i = 0;i < 5;i ++) {
+            this.players.push(new AiPlayer(this,this.width / 2,this.height / 2,this.height * 0.05,this.get_random_color(),this.height * 0.15));
+        }
 
         this.start();
+    }
+
+    get_random_color() {
+        let color = ["blue","blue","red","pink","green"];
+        return color[Math.round(Math.random() * 4)];
     }
 
     start() {

@@ -14,10 +14,15 @@ class AcGameObject {
     update() { //每一帧均会执行一此
     }
 
+    on_destory() { //销毁的时候执行一次
+        //
+    }
+
     destroy() {
-    for(let i = 0;i < AC_GAME_OBJECTS.length;i ++) {
-            if(AC_GAME_OBJECTS[i] === this) {
-                AC_GAME_OBJECTS.splice(i,1);
+        this.on_destory()
+        for (let i = 0; i < AC_GAME_OBJECTS.length; i++) {
+            if (AC_GAME_OBJECTS[i] === this) {
+                AC_GAME_OBJECTS.splice(i, 1);
                 break;
             }
         }
@@ -26,11 +31,11 @@ class AcGameObject {
 }
 
 let last_timestamp; // 上一帧的时间
-let AC_GAME_ANIMATION = function(timestamp) {
-    
-    for(let i = 0;i < AC_GAME_OBJECTS.length;i ++) {
+let AC_GAME_ANIMATION = function (timestamp) {
+
+    for (let i = 0; i < AC_GAME_OBJECTS.length; i++) {
         let obj = AC_GAME_OBJECTS[i];
-        if(!obj.has_called_start) {
+        if (!obj.has_called_start) {
             obj.start();
             obj.has_called_start = true;
         } else {
