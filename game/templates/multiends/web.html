@@ -1,4 +1,4 @@
-{% load static  %}
+{% load static %}
 
 <head>
     <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
@@ -8,13 +8,12 @@
 <body style="margin: 0">
     <div id="ac_game_12345678"></div>
     <audio id="bgMusic" loop>
-        <source src={% static 'music/知足-五月天.mp3'%} type="audio/mpeg">
+        <source src={% static 'music/知足-五月天.mp3' %} type="audio/mpeg">
     </audio>
     <script type="module">
-        import {AcGame} from "{% static 'js/dist/game.js' %}";
-        $(document).ready(function(){
+        import { AcGame } from "{% static 'js/dist/game.js' %}";
+        $(document).ready(function () {
             let ac_game = new AcGame("ac_game_12345678");
         });
     </script>
 </body>
-
